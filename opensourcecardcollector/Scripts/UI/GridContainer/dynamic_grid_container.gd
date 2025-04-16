@@ -12,9 +12,13 @@ func _on_resized() -> void:
 func changeColumns():
 	print("size changed, width:" + str(size.x))
 	columns = 1
+	if size.x < target_children_length:
+		return
 	while (columns * target_children_length) < (size.x + margin_of_error):
 		columns += 1
 	while (columns * target_children_length) > (size.x - margin_of_error):
 		columns -= 1
+		if columns <= 0:
+			columns = 1
 	print("columns:" + str(columns))
 	pass
