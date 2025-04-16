@@ -1,0 +1,354 @@
+[gd_scene load_steps=20 format=3 uid="uid://bwewr82wcxett"]
+
+[ext_resource type="Script" uid="uid://dhp3rm4v3n76w" path="res://Scripts/UI/Gallery/gallery.gd" id="1_y1ixw"]
+[ext_resource type="Shader" uid="uid://bapiikbpqxjfv" path="res://Shaders/UI/Background/Wallpaper_Shader.res" id="4_7jpji"]
+[ext_resource type="Script" uid="uid://cb1ejb87y0u05" path="res://Scripts/GameFiles/character_file_loader.gd" id="5_1qmsb"]
+[ext_resource type="Theme" uid="uid://di5imy5cnwwdc" path="res://Resources/UI_Themes/TextEdit/TextEdit.tres" id="5_jb8ey"]
+[ext_resource type="Theme" uid="uid://gvnotnp37rig" path="res://Resources/UI_Themes/Panel/Settings.tres" id="5_sv3ml"]
+[ext_resource type="Theme" uid="uid://pd26676hbp0l" path="res://Resources/UI_Themes/Text/PanelSubtitle.tres" id="6_jb8ey"]
+[ext_resource type="Script" uid="uid://nlee78qq2ve8" path="res://Scripts/UI/character_search.gd" id="6_ko7lk"]
+[ext_resource type="Script" uid="uid://deytj1y5mqgd4" path="res://Scripts/UI/Panel/Panel_Fader.gd" id="6_sqccx"]
+[ext_resource type="PackedScene" uid="uid://cob4g4o73leey" path="res://Nodes/UI/CharacterUIElement.tscn" id="7_saqgx"]
+[ext_resource type="Script" uid="uid://dfh10sbp6r30w" path="res://Scripts/UI/warning_panel.gd" id="8_sv3ml"]
+[ext_resource type="Script" uid="uid://fjim8mey8wtn" path="res://Scripts/get_tags_from_textedit.gd" id="11_saqgx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ko7lk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqccx"]
+shader = ExtResource("4_7jpji")
+shader_parameter/ColorA = Color(0.352941, 0.345098, 0.513726, 1)
+shader_parameter/ColorB = Color(0.194276, 0.172511, 0.345847, 1)
+shader_parameter/Zoom = 4.18
+shader_parameter/Speed = 0.01
+shader_parameter/Iterations = 6
+shader_parameter/Substract = 0.5
+shader_parameter/Multiplier = 1.8
+shader_parameter/InvertSpeed = 0.5
+shader_parameter/ColorA2 = Color(0.210783, 0.168818, 0.332806, 1)
+shader_parameter/ColorB2 = Color(0.225876, 0.128428, 0.298607, 1)
+shader_parameter/Zoom2 = 4.18
+shader_parameter/Delay = 10.0
+shader_parameter/Speed2 = 0.01
+shader_parameter/Iterations2 = 6
+shader_parameter/Substract2 = 0.5
+shader_parameter/Multiplier2 = 1.8
+
+[sub_resource type="Gradient" id="Gradient_sv3ml"]
+colors = PackedColorArray(0.388235, 0.243137, 0.858824, 1, 1, 0.686275, 0.894118, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7jpji"]
+gradient = SubResource("Gradient_sv3ml")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jpji"]
+bg_color = Color(0.27451, 0.25098, 0.407843, 0.729412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2xtv"]
+bg_color = Color(0.440429, 0.0918763, 0.261265, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ejyl"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sv3ml"]
+bg_color = Color(0.233151, 0.221172, 0.335027, 1)
+
+[node name="Gallery" type="Control" node_paths=PackedStringArray("cardLoader", "cardContainer", "cardFocusHide", "screenCenter", "cardPathInput", "settingsPanel", "blockedTags")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y1ixw")
+Subtitle = "...who knows..."
+Sprite = SubResource("CompressedTexture2D_ko7lk")
+cardTemplate = ExtResource("7_saqgx")
+cardLoader = NodePath("CardLoader")
+cardContainer = NodePath("Grid/ScrollContainer/GridContainer")
+cardFocusHide = NodePath("CardFocusHide")
+screenCenter = NodePath("ScreenCenter")
+cardPathInput = NodePath("Settings/Panel/VBoxContainer/cardPathInput")
+settingsPanel = NodePath("Settings")
+blockedTags = NodePath("Settings/Panel/VBoxContainer/blockedTagsInput")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+material = SubResource("ShaderMaterial_sqccx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_7jpji")
+
+[node name="TextureRect2" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7jpji")
+
+[node name="ScreenCenter" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -260.0
+offset_right = 288.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grid" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Grid"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 474)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Grid/ScrollContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="CharacterSearch" type="TextEdit" parent="Grid" node_paths=PackedStringArray("Gallery")]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -474.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_jb8ey")
+placeholder_text = "Filter by tag or name..."
+script = ExtResource("6_ko7lk")
+Gallery = NodePath("../..")
+
+[node name="CardLoader" type="Node" parent="." node_paths=PackedStringArray("displayer")]
+script = ExtResource("5_1qmsb")
+displayer = NodePath("..")
+
+[node name="CardFocusHide" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_sqccx")
+fadeInSpeed = 2.0
+fadeOutSpeed = 5.0
+
+[node name="MENU" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 48.0
+grow_horizontal = 2
+
+[node name="Button" type="Button" parent="MENU"]
+layout_mode = 2
+text = "LOAD CHARACTERS"
+
+[node name="Settings" type="Button" parent="MENU"]
+layout_mode = 2
+text = "SETTINGS
+"
+
+[node name="Settings" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_right = -512.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_sv3ml")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Settings/Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 552.0
+offset_bottom = 120.0
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]SETTINGS[/center]"
+
+[node name="SettingsExit" type="Button" parent="Settings/Panel"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 56.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_q2xtv")
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 128.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cardPathInputTitle" type="RichTextLabel" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Character Cards Directory:"
+
+[node name="cardPathInput" type="TextEdit" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(500, 34)
+layout_mode = 2
+theme = ExtResource("5_jb8ey")
+placeholder_text = "Set path here"
+
+[node name="Tutorial" type="RichTextLabel" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = ExtResource("6_jb8ey")
+bbcode_enabled = true
+text = "[i]If this is your first time, then create a folder anywhere, name it \"Characters\", copy the path and paste it above.[/i]"
+
+[node name="blockInput" type="RichTextLabel" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+text = "Blocked Tags:
+"
+
+[node name="blockedTagsInput" type="TextEdit" parent="Settings/Panel/VBoxContainer" node_paths=PackedStringArray("Gallery")]
+custom_minimum_size = Vector2(500, 34)
+layout_mode = 2
+theme = ExtResource("5_jb8ey")
+text = "nsfw, gore, eyestrain"
+placeholder_text = "ex: nsfw, gore, eyestrain"
+script = ExtResource("11_saqgx")
+Gallery = NodePath("../../../..")
+
+[node name="Tutorial2" type="RichTextLabel" parent="Settings/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = ExtResource("6_jb8ey")
+bbcode_enabled = true
+text = "[i]Set tags on here that you would like to filter out of the Character list![/i]"
+
+[node name="WarningPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_sv3ml")
+
+[node name="Panel" type="Panel" parent="WarningPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 96.0
+offset_right = -96.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_sv3ml")
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ejyl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WarningPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.807843, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 32
+bbcode_enabled = true
+text = "[center][b]Remember![/b] 
+Only download Characters from safe websites like Google Drive or Git-Hub, or create the characters yourself using an image file and an info.json file. And always double-check whatever you download.
+If it has anything other than an \"info.json\" file, a \"sprite.png\" and/or a \"sprite.jpg\" file, BEWARE! 
+
+Use a good antivirus and always scan everything you download. Don't get a virus because of this glorified png browser, please.[/center]"
+
+[node name="Button" type="Button" parent="WarningPanel/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -112.0
+offset_right = 440.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_sv3ml")
+text = "Thanks for the warning. I take full responsibility, and promise to stay safe."
+
+[connection signal="gutter_added" from="Grid/CharacterSearch" to="." method="_on_character_search_gutter_added"]
+[connection signal="text_changed" from="Grid/CharacterSearch" to="Grid/CharacterSearch" method="_on_text_changed"]
+[connection signal="pressed" from="MENU/Button" to="." method="LoadCards"]
+[connection signal="pressed" from="MENU/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Settings/Panel/SettingsExit" to="." method="_on_settings_exit_pressed"]
+[connection signal="text_changed" from="Settings/Panel/VBoxContainer/blockedTagsInput" to="Settings/Panel/VBoxContainer/blockedTagsInput" method="_on_text_changed"]
+[connection signal="pressed" from="WarningPanel/Panel/Button" to="WarningPanel" method="_on_button_pressed"]

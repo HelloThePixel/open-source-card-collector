@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cuk8gbgd28vxj"]
+
+[sub_resource type="FontFile" id="FontFile_dirsc"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_k61h0"]
+base_font = SubResource("FontFile_dirsc")
+
+[resource]
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_k61h0")

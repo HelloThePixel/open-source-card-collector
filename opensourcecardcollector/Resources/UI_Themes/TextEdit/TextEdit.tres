@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://di5imy5cnwwdc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qup23"]
+content_margin_left = 9.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.558557, 0.370104, 0.586896, 1)
+corner_radius_top_left = 16
+corner_radius_bottom_right = 16
+shadow_offset = Vector2(0, -0.015)
+
+[resource]
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0.122253, 0.122252, 0.122252, 0.6)
+TextEdit/styles/normal = SubResource("StyleBoxFlat_qup23")

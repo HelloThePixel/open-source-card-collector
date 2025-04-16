@@ -1,0 +1,196 @@
+[gd_scene load_steps=10 format=3 uid="uid://cob4g4o73leey"]
+
+[ext_resource type="Script" uid="uid://4qggngpg0fn4" path="res://Scripts/UI/CharacterUIElement/character_ui_element.gd" id="1_b2380"]
+[ext_resource type="Theme" uid="uid://ch6pf3aa3rptx" path="res://Resources/UI_Themes/Text/Subtitle.tres" id="1_w7wfu"]
+[ext_resource type="Theme" uid="uid://bivxdaaw6pjyi" path="res://Resources/UI_Themes/Panel/ImageOverlay.tres" id="3_1cxal"]
+[ext_resource type="Theme" uid="uid://csd57pn4imdtg" path="res://Resources/UI_Themes/Button/ImageButton.tres" id="3_yrmj3"]
+[ext_resource type="Theme" uid="uid://cuk8gbgd28vxj" path="res://Resources/UI_Themes/Text/Title.tres" id="4_1cxal"]
+[ext_resource type="Theme" uid="uid://bpk522uohrnyk" path="res://Resources/UI_Themes/Panel/CharacterCardImagePanel.tres" id="4_yrmj3"]
+[ext_resource type="Theme" uid="uid://bffpiwrymopig" path="res://Resources/UI_Themes/Panel/CensorPanel.tres" id="7_x7caa"]
+
+[sub_resource type="Curve" id="Curve_yrmj3"]
+_data = [Vector2(0, 0), 0.0, 2.69077, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rxjgr"]
+
+[node name="CharacterUIElement" type="Panel"]
+custom_minimum_size = Vector2(200, 300)
+anchors_preset = -1
+anchor_right = 0.174
+anchor_bottom = 0.463
+offset_right = -0.448013
+offset_bottom = -0.0240173
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b2380")
+growCurve = SubResource("Curve_yrmj3")
+
+[node name="ImagePanel" type="Panel" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_yrmj3")
+
+[node name="TextureRect" type="TextureRect" parent="ImagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rxjgr")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="ImageButton" type="Button" parent="ImagePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_yrmj3")
+
+[node name="BlockPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_x7caa")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BlockPanel"]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 200.0
+offset_bottom = 192.0
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center][color=red]BLOCKED[/color]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="TextPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme = ExtResource("3_1cxal")
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/TextPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.018
+offset_top = -15.0
+offset_bottom = 6.99202
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("4_1cxal")
+bbcode_enabled = true
+text = "[center][b]Name[/b][/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Subtitle" type="RichTextLabel" parent="VBoxContainer/TextPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("1_w7wfu")
+bbcode_enabled = true
+text = "[center][i]Name[/i][/center]"
+fit_content = true
+scroll_active = false
+selection_enabled = true
+
+[node name="DescriptionPanel" type="Panel" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme = ExtResource("3_1cxal")
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="VBoxContainer/DescriptionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("1_w7wfu")
+bbcode_enabled = true
+selection_enabled = true
+
+[node name="CreditsPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 29.795)
+layout_mode = 2
+theme = ExtResource("3_1cxal")
+
+[node name="CreditsLabel" type="RichTextLabel" parent="VBoxContainer/CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("1_w7wfu")
+theme_override_colors/default_color = Color(0.912902, 0.704629, 3.85046e-07, 1)
+bbcode_enabled = true
+text = "Credits:"
+scroll_active = false
+selection_enabled = true
+
+[node name="TagsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.013
+offset_left = 8.0
+offset_right = 184.0
+offset_bottom = -7.89999
+grow_horizontal = 2
+
+[node name="Tags" type="RichTextLabel" parent="TagsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="ImagePanel/ImageButton" to="." method="_on_image_button_pressed"]

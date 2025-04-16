@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ch6pf3aa3rptx"]
+
+[sub_resource type="SystemFont" id="SystemFont_veko3"]
+
+[sub_resource type="FontVariation" id="FontVariation_01a8v"]
+base_font = SubResource("SystemFont_veko3")
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.687215, 0.687215, 0.687215, 1)
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_01a8v")
