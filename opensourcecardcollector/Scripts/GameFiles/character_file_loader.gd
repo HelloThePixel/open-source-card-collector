@@ -15,8 +15,6 @@ func Load(path : String = "C:/Users/Pc/Documents/OSGFiles/Characters") -> bool:
 	characters.append_array(CreateCharactersFromFiles(file))
 	character_files.append_array(characters)
 	showCharacters(character_files)
-	#for i in character_files:
-		#print(i.Name)
 	return true
 
 func showCharacters(chars : Array[CharacterResource]):
@@ -60,6 +58,7 @@ func CreateCharacterResource(path : String) -> CharacterResource:
 	var charOffset = Vector2.ZERO
 	var json_as_text = FileAccess.get_file_as_string(path + "info.json")
 	var json_as_dict = JSON.parse_string(json_as_text)
+	#pass all the info
 	if json_as_dict:
 		if json_as_dict.has("name"):
 			charName = json_as_dict["name"]

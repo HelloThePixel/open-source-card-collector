@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhp3rm4v3n76w" path="res://Scripts/UI/Gallery/gallery.gd" id="1_y1ixw"]
 [ext_resource type="Shader" uid="uid://bapiikbpqxjfv" path="res://Shaders/UI/Background/Wallpaper_Shader.res" id="4_7jpji"]
+[ext_resource type="Script" uid="uid://djsqj26aeeibe" path="res://Scripts/UI/GridContainer/dynamic_grid_container.gd" id="4_saqgx"]
 [ext_resource type="Script" uid="uid://cb1ejb87y0u05" path="res://Scripts/GameFiles/character_file_loader.gd" id="5_1qmsb"]
 [ext_resource type="Theme" uid="uid://di5imy5cnwwdc" path="res://Resources/UI_Themes/TextEdit/TextEdit.tres" id="5_jb8ey"]
 [ext_resource type="Theme" uid="uid://gvnotnp37rig" path="res://Resources/UI_Themes/Panel/Settings.tres" id="5_sv3ml"]
@@ -9,10 +10,8 @@
 [ext_resource type="Script" uid="uid://nlee78qq2ve8" path="res://Scripts/UI/character_search.gd" id="6_ko7lk"]
 [ext_resource type="Script" uid="uid://deytj1y5mqgd4" path="res://Scripts/UI/Panel/Panel_Fader.gd" id="6_sqccx"]
 [ext_resource type="PackedScene" uid="uid://cob4g4o73leey" path="res://Nodes/UI/CharacterUIElement.tscn" id="7_saqgx"]
-[ext_resource type="Script" uid="uid://dfh10sbp6r30w" path="res://Scripts/UI/warning_panel.gd" id="8_sv3ml"]
-[ext_resource type="Script" uid="uid://fjim8mey8wtn" path="res://Scripts/get_tags_from_textedit.gd" id="11_saqgx"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ko7lk"]
+[ext_resource type="Script" uid="uid://dfh10sbp6r30w" path="res://Scripts/UI/popup_panel.gd" id="8_sv3ml"]
+[ext_resource type="Script" uid="uid://fjim8mey8wtn" path="res://Scripts/tag_blocker.gd" id="11_saqgx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sqccx"]
 shader = ExtResource("4_7jpji")
@@ -59,8 +58,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y1ixw")
-Subtitle = "...who knows..."
-Sprite = SubResource("CompressedTexture2D_ko7lk")
 cardTemplate = ExtResource("7_saqgx")
 cardLoader = NodePath("CardLoader")
 cardContainer = NodePath("Grid/ScrollContainer/GridContainer")
@@ -140,7 +137,12 @@ grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="Grid/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 5
+script = ExtResource("4_saqgx")
+target_children_length = 204
+margin_of_error = 0
 
 [node name="CharacterSearch" type="TextEdit" parent="Grid" node_paths=PackedStringArray("Gallery")]
 custom_minimum_size = Vector2(0, 38)
@@ -344,6 +346,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_sv3ml")
 text = "Thanks for the warning. I take full responsibility, and promise to stay safe."
 
+[connection signal="resized" from="Grid/ScrollContainer/GridContainer" to="Grid/ScrollContainer/GridContainer" method="_on_resized"]
 [connection signal="gutter_added" from="Grid/CharacterSearch" to="." method="_on_character_search_gutter_added"]
 [connection signal="text_changed" from="Grid/CharacterSearch" to="Grid/CharacterSearch" method="_on_text_changed"]
 [connection signal="pressed" from="MENU/Button" to="." method="LoadCards"]

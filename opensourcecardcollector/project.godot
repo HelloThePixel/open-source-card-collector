@@ -21,6 +21,10 @@ config/icon="res://icon.svg"
 SaveManager="*res://Singletons/SaveManager.tscn"
 CommonMethods="*res://Singletons/common_methods.gd"
 
+[display]
+
+window/size/viewport_width=1156
+
 [rendering]
 
 textures/canvas_textures/default_texture_repeat=1

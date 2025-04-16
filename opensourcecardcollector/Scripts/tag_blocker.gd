@@ -7,7 +7,8 @@ func _ready() -> void:
 
 func GetTags() -> PackedStringArray:
 	return string_array(text)
-	
+
+#TODO: Move this function here and in character_search.gd into common_methods.gd
 func string_array(basetext : String) -> PackedStringArray:
 	var array : PackedStringArray = basetext.split(",")
 	for i in array:

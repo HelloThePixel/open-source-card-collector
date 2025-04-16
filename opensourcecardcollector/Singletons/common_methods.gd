@@ -1,8 +1,13 @@
 extends Node
-
+#use this seldomly, only for functions that you want to access from multiple codes, to avoid copy-pasting
 
 func FilterByTags(cards : Array[CharacterUIElement], tags : PackedStringArray, inclusive = false, include_name = false, exact = false) -> Array[CharacterUIElement]:
-	#inclusive == if it includes 1 or more of the gags, otherwise it must include all tags
+	#inclusive: valid if it includes 1 or more of the tags, otherwise it must include all tags
+	#include name: if it will also search for the character's name and credits in search for a matching tag.
+	#exact: does the tag have to match 1-1, or can it simply Contain the contents of the search?
+		#example: when searching "red", should it only include results that have the tag "red",
+		#			or should it include results like "infrared" that have red inside?
+		#TODO: add a way to specify some tags as exact and assume not exact by default
 	var filteredCards : Array[CharacterUIElement] = []
 	
 	

@@ -6,9 +6,10 @@ class_name CharacterResource
 @export var Credits : String
 @export var Description : String
 @export var Sprite : Texture2D
+#I still havent figured out how to do this, but im not commenting it just yet 
+#because the methods for passing this variable's info are already implemented
 @export var SpriteOffset : Vector2 = Vector2.ZERO
 @export var Tags : Array[String]
-#@export var SpriteZoom : float = 1.0
 
 func Create(img : Texture2D, n = "???", m = "...", c = "", d = "", offset = Vector2.ZERO):
 	if n == "":

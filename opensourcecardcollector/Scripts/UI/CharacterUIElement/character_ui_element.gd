@@ -141,12 +141,6 @@ func Focus(b : bool, e = Vector2.ZERO):
 func Blocked(b : bool):
 	blocked = b
 
-func Enabled(b : bool):
-	if b:
-		pass#imageButton.mouse_filter = Control.MOUSE_FILTER_STOP
-	else:
-		pass#imageButton.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
 func _on_image_button_pressed() -> void:
 	handler.ChangeFocus(self)
 	pass # Replace with function body.
