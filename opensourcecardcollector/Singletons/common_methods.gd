@@ -40,15 +40,9 @@ func FilterByTags(cards : Array[CharacterUIElement], tags : PackedStringArray, i
 			
 			if !hasAsTag and include_name:
 				if card.characterName.contains(tag):
-					if exact and card.characterName == tag:
-						tagAmount += 1
-					elif !exact:
-						tagAmount += 1
+					tagAmount += 1
 				elif card.characterCredits.contains(tag):
-					if exact and card.characterCredits == tag:
-						tagAmount += 1
-					elif !exact:
-						tagAmount += 1
+					tagAmount += 1
 		if tagAmount > 0:
 			if inclusive:
 				filteredCards.append(card)
