@@ -4,7 +4,7 @@ A digital trading card browser that uses simple files to create its cards. This 
 
 ### Getting Started
 
-To download a build for this project, _
+Go to the release tab on the right to download a build of this project!
 
 If you want to edit this project, you'll need to install Godot. Go to godotengine.org/download and look for the 4.4 or 4.4.1 release - to my knowledge there shouldn't be any problems using either version. Download and install the engine, then import the project.
 
@@ -62,6 +62,8 @@ One they're loaded, you can search your character list using the search bar. The
 ### Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+This is still very early and there's a lot of ambitious ideas i am considering. I want to see how people react to this first build and what sort of features are most wanted before i implement anything beyond the core of "glorified png browser".
 
 ## Authors
 
