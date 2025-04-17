@@ -27,7 +27,7 @@ Once you have a build of Open Source Card Collector, you need some cards!
 
 (You can use the included Template Character as a base for making new cards!)
 
-Create a new folder in your computer and name it whatever you want. Inside it, put a .png or .jpg file named "sprite" with a 1:1 ration (the template image is 288x288). Keep in mind that this image will be displayed as both a square and a rectangle (look at the Template Character sprite for reference)
+Create a new folder in your computer and name it whatever you want. Inside it, put a .png or .jpg file named "sprite" with a 1:1 ratio (the template image is 288x288). Keep in mind that this image will be displayed as both a square and a rectangle (look at the Template Character sprite for reference)
 In addition to that, put a file named info.json. This will contain all the info for the character.
 ```json
 {
