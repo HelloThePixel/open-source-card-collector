@@ -8,7 +8,7 @@ Go to the release tab on the right to download a build of this project!
 
 If you want to edit this project, you'll need to install Godot. Go to godotengine.org/download and look for the 4.4 or 4.4.1 release - to my knowledge there shouldn't be any problems using either version. Download and install the engine, then import the project.
 
-And if you want some cards to get you started, here's a drive folder with five cards drawn by yours truly! [Google Drive Folder](https://drive.google.com/drive/folders/1cQIi5QAIVI3DZ2Ajb1G3zAy2T-qoDVkT?usp=sharing)
+And if you want some cards to get you started, here's a google drive folder with five cards drawn by yours truly! [Starting Cards (Google Drive)](https://drive.google.com/drive/folders/1cQIi5QAIVI3DZ2Ajb1G3zAy2T-qoDVkT?usp=sharing)
 
 ## Requirements
 
